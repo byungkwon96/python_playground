@@ -64,5 +64,5 @@ var = "Bob"
 my_string = "the variable is %s" % var  # % is a place holder (%s, %d, %f)
 print(my_string)
 my_string = "the variable is {}".format(var)  # use {} and format (:2.f)
-my_string = f"The variable is {var}"  # put f infront
+my_string = f"The variable is {var}"  # put f infront use f-string is the best
 print(my_string)
