@@ -79,3 +79,7 @@ print(setA.isdisjoint(setC))
 
 # copy only equals means same reference
 setA = setB.copy()
+
+# frozen sets immmutable version of sets
+a = frozenset("Hello")
+print(a)
