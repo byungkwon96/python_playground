@@ -103,7 +103,10 @@ logger.setLevel(logging.INFO)
 handler = RotatingFileHandler("app.log", maxBytes=2000, backupCount=5)
 logger.addHandler(handler)
 
+# log every 5s
 handlerT = TimedRotatingFileHandler(
     "timed_test.log", when="s", interval=5, backupCount=5
 )
 # logger.addHandler(handlerT)
+
+# use python-json-logger
