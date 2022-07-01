@@ -1,4 +1,4 @@
-from multiprocessing import Process
+from multiprocessing import Process, Value, Array, Lock, Pool
 from threading import Thread
 import os
 import time
@@ -47,3 +47,44 @@ for t in threads:
     t.join()
 
 print("end threads")
+
+
+def add_100(number, lock):
+    with lock:
+        for i in range(100):
+            time.sleep(0.01)
+            number.value += 1
+
+
+def cube(number):
+    return number * number * number
+
+
+# since processing cannot share data we use Value() and Array()
+if __name__ == "__main__":
+
+    lock = Lock()
+    shared_number = Value("i", 0)
+    print("Number at beginning is ", shared_number.value)
+
+    p1 = Process(target=add_100, args=(shared_number, lock))
+    p2 = Process(target=add_100, args=(shared_number, lock))
+
+    p1.start()
+    p2.start()
+
+    p1.join()
+    p2.join()
+
+    print("Number at end is ", shared_number.value)
+
+    # process pool manange the pool
+    pool = Pool()
+    numbers = range(10)
+    # map,apply, join,close
+    result = pool.map(cube, numbers)  # allocate maximum number of process
+
+    pool.close()
+    pool.join()
+
+    print(result)
