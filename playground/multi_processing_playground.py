@@ -83,6 +83,7 @@ if __name__ == "__main__":
     numbers = range(10)
     # map,apply, join,close
     result = pool.map(cube, numbers)  # allocate maximum number of process
+    # pool.apply(cube,  numbers[0]) - one arguments
 
     pool.close()
     pool.join()

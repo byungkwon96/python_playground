@@ -34,3 +34,9 @@ ba(**my_dict)  # for dictionary needs **
 # 3 * 7 multiplication
 # 2 ** 4 power
 zeros = [0] * 10  # create list, tuples, strings
+# use as *args, **kwargs
+first, *others = zeros  # can unpack with
+
+# deep copy
+# import copy
+# cpy = copy.deepcopy
