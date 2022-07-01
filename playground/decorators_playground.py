@@ -84,3 +84,6 @@ def say_hello():
 
 say_hello()
 say_hello()
+
+#typical implementation of decoratros
+# debug, checks, time, registration of function, cache the return value, update the state
